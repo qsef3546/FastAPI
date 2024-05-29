@@ -4,10 +4,11 @@ class Config:
 
     SCHEME = "postgresql"
     USERNAME = "postgres"
-    PASSWORD = "admin1234!"
-    HOST = "host.docker.internal"
+    PASSWORD = "postgres"
+    # HOST = "host.docker.internal"
+    HOST = "postgres"
     PORT = 5432
-    PATH = "user"
+    PATH = "postgres"
 
     @property
     def SQLALCHEMY_DATABASE_URI(self) -> PostgresDsn:

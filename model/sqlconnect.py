@@ -1,9 +1,9 @@
 from sqlmodel import Field, SQLModel, create_engine, Session, select
-from sqlconf import config
+from model.sqlconf import config
 
 
 engine = create_engine(str(config.SQLALCHEMY_DATABASE_URI))
-
+# SQLModel.metadata.create_all(engine)
 class myuser(SQLModel, table=True):
     name: str | None = Field(default=None, primary_key=True)
     age: int | None = None
@@ -16,6 +16,7 @@ def selects():
         return s
         
 def insert(u:myuser):
+    SQLModel.metadata.create_all(engine)
     with Session(engine) as session:
         session.add(u)
         session.commit()
